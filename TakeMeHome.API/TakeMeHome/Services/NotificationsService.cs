@@ -40,6 +40,16 @@ public class NotificationsService : INotificationsService
         }
     }
 
+    public Task<Notifications> FindByIdAsync(int notificationsId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Notifications> FindByUserIdAsync(int userId)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<NotificationsResponse> UpdateAsync(int id, Notifications notifications)
     {
         var existingNotifications = await _notificationsRepository.FindIdAsync(id);

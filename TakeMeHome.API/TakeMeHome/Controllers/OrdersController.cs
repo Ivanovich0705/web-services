@@ -28,7 +28,7 @@ public class OrdersController : ControllerBase
 
     [HttpGet]
     public async Task<IEnumerable<OrderResource>> GetAllAsync()
-    {
+    {   
         var orders = await _orderService.ListAsync();
         var resources = _mapper.Map<IEnumerable<Order>, IEnumerable<OrderResource>>(orders);
         return resources;
