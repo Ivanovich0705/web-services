@@ -9,6 +9,8 @@ using TakeMeHome.API.TakeMeHome.Resources;
 namespace TakeMeHome.API.TakeMeHome.Controllers;
 
 [Route("/api/v1/[controller]")]
+
+//Method Controller for Orders
 public class OrdersController : ControllerBase
 {
     private readonly IOrderService _orderService;

@@ -6,7 +6,7 @@ using TakeMeHome.API.TakeMeHome.Domain.Services;
 using TakeMeHome.API.TakeMeHome.Resources;
 
 namespace TakeMeHome.API.TakeMeHome.Controllers;
-
+//Comment Method Controller
 [Route("/api/v1/[controller]")]
 public class CommentsController : ControllerBase
 {
