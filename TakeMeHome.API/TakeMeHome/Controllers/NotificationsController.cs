@@ -13,13 +13,15 @@ namespace TakeMeHome.API.TakeMeHome.Controllers;
 public class NotificationsController: ControllerBase
 {
     private readonly INotificationsService _notificationsService;
+    private readonly IUserService _userService;
     private readonly IMapper _mapper;
 
 
-    public NotificationsController(INotificationsService notificationsService, IMapper mapper)
+    public NotificationsController(INotificationsService notificationsService, IMapper mapper, IUserService userService)
     {
         _notificationsService = notificationsService;
         _mapper = mapper;
+        _userService = userService;
     }
     
     [HttpGet]
@@ -31,6 +33,15 @@ public class NotificationsController: ControllerBase
         return resources;
     }
         
+    [HttpGet]
+    [Route("/user/{user_id}")]
+    public async Task<IEnumerable<NotificationsResource>> GetByUserIdAsync(int user_id)
+    {
+        var notifications = await _notificationsService.ListByUserIdAsync(user_id);
+        var resources = _mapper.Map<IEnumerable<Notifications>, IEnumerable<NotificationsResource>>(notifications);
+        return resources;
+    }
+    
     [HttpPatch("{id}")]
     public async Task<IActionResult> UpdateAsync(int id, [FromBody] JsonPatchDocument<Notifications> resource)
     {
@@ -70,17 +81,6 @@ public class NotificationsController: ControllerBase
         var notificationsResource = _mapper.Map<Notifications, NotificationsResource>(result.Resource);
         return Ok(notificationsResource);
     }
-    
-    [HttpGet]
-    [Route("/user/{user_id}")]
-    public async Task<IEnumerable<NotificationsResource>> GetByUserIdAsync(int user_id)
-    {
-        var notifications = await _notificationsService.ListByUserIdAsync(user_id);
-        var resources = _mapper.Map<IEnumerable<Notifications>, IEnumerable<NotificationsResource>>(notifications);
-        return resources;
-    }
-    
-    
     
     [HttpDelete]
     [Route("{notifications_id}")]
