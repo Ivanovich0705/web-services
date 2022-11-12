@@ -22,7 +22,7 @@ public class NotificationsRepository : BaseRepository  , INotificationsRepositor
         await _context.Notifications.AddAsync(notifications);
     }
 
-    public async Task<Notifications> FindIdAsync(int id)
+    public async Task<Notifications> FindByIdAsync(int id)
     {
         return await _context.Notifications.FindAsync(id);
     }
@@ -44,4 +44,5 @@ public class NotificationsRepository : BaseRepository  , INotificationsRepositor
     {
         _context.Notifications.Remove(notifications);
     }
+    
 }

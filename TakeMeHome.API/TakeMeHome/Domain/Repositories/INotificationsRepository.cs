@@ -6,8 +6,9 @@ public interface INotificationsRepository
 {
     Task<IEnumerable<Notifications>> ListAsync();
     Task AddAsync(Notifications notifications);
-    Task<Notifications> FindIdAsync(int id);
+
     Task<IEnumerable<Notifications>> FindByUserId(int userId);
     void Update(Notifications notifications);
     void Remove(Notifications notifications);
+    Task<Notifications> FindByIdAsync(int id);
 }

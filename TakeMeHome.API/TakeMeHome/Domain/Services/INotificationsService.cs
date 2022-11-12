@@ -9,7 +9,7 @@ public interface INotificationsService
     Task<IEnumerable<Notifications>> ListByUserIdAsync(int userId);
     Task<NotificationsResponse> SaveAsync(Notifications notifications);
     Task<Notifications> FindByIdAsync(int notificationsId);
-    Task<Notifications> FindByUserIdAsync(int userId);
+    
     Task<NotificationsResponse> UpdateAsync(int id, Notifications notifications);
     Task<NotificationsResponse> DeleteAsync(int id);
 }

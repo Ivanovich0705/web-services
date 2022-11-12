@@ -40,19 +40,14 @@ public class NotificationsService : INotificationsService
         }
     }
 
-    public Task<Notifications> FindByIdAsync(int notificationsId)
+    public async Task<Notifications> FindByIdAsync(int notificationsId)
     {
-        throw new NotImplementedException();
+        return await _notificationsRepository.FindByIdAsync(notificationsId);
     }
-
-    public Task<Notifications> FindByUserIdAsync(int userId)
-    {
-        throw new NotImplementedException();
-    }
-
+    
     public async Task<NotificationsResponse> UpdateAsync(int id, Notifications notifications)
     {
-        var existingNotifications = await _notificationsRepository.FindIdAsync(id);
+        var existingNotifications = await _notificationsRepository.FindByIdAsync(id);
 
         if (existingNotifications == null)
             return new NotificationsResponse("Notification not found.");
@@ -74,7 +69,7 @@ public class NotificationsService : INotificationsService
 
     public async Task<NotificationsResponse> DeleteAsync(int id)
     {
-        var existingNotifications = await _notificationsRepository.FindIdAsync(id);
+        var existingNotifications = await _notificationsRepository.FindByIdAsync(id);
         
         if(existingNotifications == null)
             return new NotificationsResponse("Notifications not found.");
