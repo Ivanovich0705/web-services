@@ -21,14 +21,8 @@
 
     <ItemGroup>
       <Folder Include="Shared" />
-      <Folder Include="TakeMeHome\Domain\Models" />
-      <Folder Include="TakeMeHome\Domain\Repositories" />
-      <Folder Include="TakeMeHome\Domain\Services\Communication" />
       <Folder Include="TakeMeHome\Mapping" />
       <Folder Include="TakeMeHome\Persistence\Contexts" />
-      <Folder Include="TakeMeHome\Persistence\Repositories" />
-      <Folder Include="TakeMeHome\Resources" />
-      <Folder Include="TakeMeHome\Services" />
     </ItemGroup>
 
 </Project>
