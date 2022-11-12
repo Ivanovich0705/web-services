@@ -7,7 +7,7 @@ using TakeMeHome.API.TakeMeHome.Domain.Services;
 using TakeMeHome.API.TakeMeHome.Resources;
 
 namespace TakeMeHome.API.TakeMeHome.Controllers;
-
+//Method Controller for Users
 [Route("/api/v1/[controller]")]
 public class UsersController : ControllerBase
 {
