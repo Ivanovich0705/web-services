@@ -15,7 +15,7 @@ public class CommentRepository : BaseRepository, ICommentRepository
     {
         return await _context.Comments
             .Include(p => p.Order)
-            .ThenInclude(p=>p.Status)
+            .ThenInclude(p=>p.OrderStatus)
             .ToListAsync();
     }
 
