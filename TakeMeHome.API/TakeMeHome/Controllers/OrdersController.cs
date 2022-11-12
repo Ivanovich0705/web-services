@@ -9,6 +9,8 @@ using TakeMeHome.API.TakeMeHome.Resources;
 namespace TakeMeHome.API.TakeMeHome.Controllers;
 
 [Route("/api/v1/[controller]")]
+
+//Method Controller for Orders
 public class OrdersController : ControllerBase
 {
     private readonly IOrderService _orderService;
@@ -26,7 +28,7 @@ public class OrdersController : ControllerBase
 
     [HttpGet]
     public async Task<IEnumerable<OrderResource>> GetAllAsync()
-    {
+    {   
         var orders = await _orderService.ListAsync();
         var resources = _mapper.Map<IEnumerable<Order>, IEnumerable<OrderResource>>(orders);
         return resources;
