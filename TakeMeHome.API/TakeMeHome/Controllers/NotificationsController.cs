@@ -7,7 +7,7 @@ using TakeMeHome.API.TakeMeHome.Resources;
 
 namespace TakeMeHome.API.TakeMeHome.Controllers;
 
-[Route("*/api/v1/[controller]")]
+[Route("/api/v1/[controller]")]
 public class NotificationsController: ControllerBase
 {
     private readonly INotificationsService _notificationsService;
