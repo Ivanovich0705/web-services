@@ -21,6 +21,7 @@
 
     <ItemGroup>
       <Folder Include="Shared" />
+      <Folder Include="TakeMeHome\Controllers" />
       <Folder Include="TakeMeHome\Domain\Models" />
       <Folder Include="TakeMeHome\Domain\Repositories" />
       <Folder Include="TakeMeHome\Domain\Services\Communication" />
