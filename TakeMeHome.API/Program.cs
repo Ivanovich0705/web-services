@@ -1,9 +1,5 @@
-using System.Configuration;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-using TakeMeHome.API.TakeMeHome.Domain.Models;
 using TakeMeHome.API.TakeMeHome.Domain.Repositories;
 using TakeMeHome.API.TakeMeHome.Domain.Services;
 using TakeMeHome.API.TakeMeHome.Mapping;
@@ -99,4 +95,7 @@ app.MapControllers();
 
 app.Run();
 
-public partial class Program {}
+namespace TakeMeHome.API
+{
+    public partial class Program {}
+}

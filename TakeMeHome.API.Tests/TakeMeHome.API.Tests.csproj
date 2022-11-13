@@ -27,4 +27,10 @@
       <ProjectReference Include="..\TakeMeHome.API\TakeMeHome.API.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="Features\CommentServiceTests.feature.cs">
+        <DependentUpon>CommentServiceTests.feature</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>
