@@ -9,4 +9,7 @@ public interface IProductService
     Task<ProductResponse> SaveAsync(Product product);
     Task<ProductResponse> UpdateAsync(int id, Product product);
     Task<ProductResponse> DeleteAsync(int id);
+    Task<Product> FindByOrderIdAsync(int id);
+
+
 }
