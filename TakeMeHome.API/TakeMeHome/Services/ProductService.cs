@@ -8,13 +8,15 @@ namespace TakeMeHome.API.TakeMeHome.Services;
 public class ProductService : IProductService
 {
     private readonly IProductRepository _productRepository;
-
+    private readonly IOrderRepository _orderRepository;
+        
     private readonly IUnitOfWork _unitOfWork;
 
-    public ProductService(IProductRepository productRepository, IUnitOfWork unitOfWork)
+    public ProductService(IProductRepository productRepository, IUnitOfWork unitOfWork, IOrderRepository orderRepository)
     {
         _productRepository = productRepository;
         _unitOfWork = unitOfWork;
+        _orderRepository = orderRepository;
     }
 
     public async  Task<IEnumerable<Product>> ListAsync()
@@ -81,5 +83,10 @@ public class ProductService : IProductService
         {
             return new ProductResponse($"An error occurred while deleting the product: {e.Message}");
         }    
+    }
+
+    public async Task<Product> FindByOrderIdAsync(int id)
+    {
+        return await _productRepository.FindByOrderIdAsync(id);
     }
 }
