@@ -50,7 +50,7 @@ public class NotificationsService : INotificationsService
         var existingNotifications = await _notificationsRepository.FindByIdAsync(id);
 
         if (existingNotifications == null)
-            return new NotificationsResponse("Notification not found.");
+            return new NotificationsResponse("Notifications not found.");
 
         existingNotifications.Type = notifications.Type;
 

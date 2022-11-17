@@ -25,4 +25,7 @@ public class Order
     
     public int CommentId { get; set; }
     public Comment Comment { get; set; }
+    
+    public int NotificationId { get; set; }
+    public Notifications Notifications { get; set; }
 }
