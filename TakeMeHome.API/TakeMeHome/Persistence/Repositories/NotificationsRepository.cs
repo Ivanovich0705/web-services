@@ -30,10 +30,11 @@ public class NotificationsRepository : BaseRepository  , INotificationsRepositor
     public async Task<IEnumerable<Notifications>> FindByUserId(int userId)
     {
         return await _context.Notifications
-            .Where(p => p.User.Id.Equals(userId))
+            .Where(p => p.Order.UserId==userId)
             //.Include(p => p.Order.User)
-            .Include(p=>p.User.Id)
+            .Include(p=>p.Order)
             .ToListAsync();
+            //.ToListAsync();
     }
     public void Update(Notifications notifications)
     {
