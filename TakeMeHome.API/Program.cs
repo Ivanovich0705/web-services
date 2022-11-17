@@ -34,7 +34,6 @@ builder.Services.AddSwaggerGen(options =>
     options.EnableAnnotations();
 });
 
-
 builder.Services.AddSwaggerGen(c =>
 {
 //c.SwaggerDoc("v1");
@@ -86,6 +85,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Configure CORS 
+app.UseCors(x => x
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
