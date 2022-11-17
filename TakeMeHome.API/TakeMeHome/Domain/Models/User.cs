@@ -19,6 +19,6 @@ public class User
     //Relationships
     public IList<Order> AsUserOrders { get; set; } = new List<Order>();
     public IList<Order> AsClientOrders { get; set; } = new List<Order>();
-    public IList<Notifications> Notifications { get; set; } = new List<Notifications>();
+    //public IList<Notifications> Notifications { get; set; } = new List<Notifications>();
 
 }

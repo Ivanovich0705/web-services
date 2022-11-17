@@ -34,7 +34,7 @@ public class NotificationsController: ControllerBase
     }
         
     [HttpGet]
-    [Route("/user/{user_id}")]
+    [Route("{user_id}")]
     public async Task<IEnumerable<NotificationsResource>> GetByUserIdAsync(int user_id)
     {
         var notifications = await _notificationsService.ListByUserIdAsync(user_id);

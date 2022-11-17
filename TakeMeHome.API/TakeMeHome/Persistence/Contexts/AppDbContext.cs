@@ -47,11 +47,12 @@ public class AppDbContext : DbContext
             .HasMany(p=>p.AsClientOrders)
             .WithOne(p=>p.Client)
             .HasForeignKey(p=>p.ClientId);
-        
-        builder.Entity<User>()
-            .HasMany(p=>p.Notifications)
-            .WithOne(p=>p.User)
-            .HasForeignKey(p=>p.UserId);
+
+        builder.Entity<Order>()
+            //.HasMany(p=>p.Notifications)
+            .HasOne(p => p.Notifications)
+            .WithOne(p => p.Order)
+            .HasForeignKey<Notifications>(p => p.OrderId);
 
         
         builder.Entity<OrderStatus>()
