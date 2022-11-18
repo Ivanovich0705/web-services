@@ -14,7 +14,7 @@ public class SaveOrderResource
     [Required]
     public int UserId { get; set; }
     
-    [Required]
+    //[Required]
     public int ClientId { get; set; }
 
     [Required]
