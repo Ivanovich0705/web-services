@@ -196,4 +196,23 @@ public class UsersController : ControllerBase
         return Ok(user);
     }
     
+    [HttpGet]
+    [Route("email/{email}")]
+    [SwaggerOperation(
+        Summary = "Check if email is already in use",
+        Description = "Check if email is already in use",
+        OperationId = "CheckEmail"
+    )]
+    [SwaggerResponse(200, "The operation was successful", typeof(UserResource))]
+    [SwaggerResponse(400, "The data is not valid")]
+    [SwaggerResponse(500, "An unexpected error occurred")]
+    public async Task<IActionResult> CheckEmailAsync(string email)
+    {
+        var result = await _userService.FindByEmailAsync(email);
+        if (result == null)
+            return BadRequest("Email is not in use");
+        var resource = _mapper.Map<User, UserResource>(result);
+        return Ok(resource);
+    }
+    
 }

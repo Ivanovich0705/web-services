@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TakeMeHome.API.Shared.Extensions;
 using TakeMeHome.API.TakeMeHome.Domain.Models;
 using TakeMeHome.API.TakeMeHome.Domain.Services;
+using TakeMeHome.API.TakeMeHome.Domain.Services.Communication;
 using TakeMeHome.API.TakeMeHome.Resources;
 
 namespace TakeMeHome.API.TakeMeHome.Controllers;
@@ -26,6 +27,24 @@ public class ProductsController : ControllerBase
         var resources = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
         return resources;
     }
+    
+    [HttpGet]
+    [Route("{userId}/{statusId}")]
+    public async Task<IEnumerable<ProductResource>> GetByOrderIdAndStatusIdAsync(int userId, int statusId)
+    {
+        var products = await _productService.ListByUserIdAndStatusIdAsync(userId, statusId);
+        var resources = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
+        return resources;
+    }
+    
+    [HttpGet("order/{id}")]
+    public async Task<IActionResult> GetByOrderIdAsync(int id)
+    {
+        var products = await _productService.FindByOrderIdAsync(id);
+        var resources = _mapper.Map<Product, ProductResource>(products);
+        return Ok(resources);
+    }
+    
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveProductResource resource)
     {

@@ -35,13 +35,32 @@ public class OrdersController : ControllerBase
     }
     
     [HttpGet]
-    [Route("/status/{status_id}")]
+    [Route("status/{status_id}")]
     public async Task<IEnumerable<OrderResource>> GetByStatusIdAsync(int status_id)
     {
         var orders = await _orderService.ListByOrderStatusIdAsync(status_id);
         var resources = _mapper.Map<IEnumerable<Order>, IEnumerable<OrderResource>>(orders);
         return resources;
     }
+
+    [HttpGet]
+    [Route("{id}")]
+    public async Task<OrderResource> GetAsync(int id)
+    {
+        var order = await _orderService.FindByIdAsync(id);
+        var resource = _mapper.Map<Order, OrderResource>(order);
+        return resource;
+    }    
+    
+    [HttpGet]
+    [Route("status/{status_id}/user/{user_id}")]
+    public async Task<IEnumerable<OrderResource>> GetByStatusIdAndUserIdAsync(int status_id, int user_id)
+    {
+        var orders = await _orderService.ListByOrderStatusIdAndUserId(status_id, user_id);
+        var resources = _mapper.Map<IEnumerable<Order>, IEnumerable<OrderResource>>(orders);
+        return resources;
+    }
+    
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveOrderResource resource)
     {
@@ -91,4 +110,15 @@ public class OrdersController : ControllerBase
         var orderResource = _mapper.Map<Order, OrderResource>(result.Resource);
         return Ok(order);
     }
+    
+    [HttpGet]
+    [Route("orderCode/{orderCode}/user/{userId}")]
+    public async Task<OrderResource> GetByOrderCodeAndUserIdAsync(string orderCode, int userId)
+    {
+        var order = await _orderService.FindByOrderCodeAndUserIdAsync(orderCode, userId);
+        var resource = _mapper.Map<Order, OrderResource>(order);
+        return resource;
+    }
+    
+    
 }

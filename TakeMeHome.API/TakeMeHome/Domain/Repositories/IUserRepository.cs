@@ -9,6 +9,7 @@ public interface IUserRepository
     Task<User> FindByIdAsync(int id);
     Task<User> FindByUserNameAsync(string userName);
     Task<User> FindByEmailAndPasswordAsync(string email, string password);
+    Task<User> FindByEmailAsync(string email);
     void Update(User user);
     void Remove(User user);
 }
