@@ -46,7 +46,7 @@ public class NotificationsController: ControllerBase
     [Route("{order_id}")]
     public async Task<IEnumerable<NotificationsResource>> GetByOrderIdAsync(int order_id)
     {
-        var notifications = await _notificationsService.ListByUserIdAsync(order_id);
+        var notifications = await _notificationsService.ListByOrderIdAsync(order_id);
         var resources = _mapper.Map<IEnumerable<Notifications>, IEnumerable<NotificationsResource>>(notifications);
         return resources;
     }
