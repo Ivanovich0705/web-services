@@ -50,7 +50,18 @@ public class OrderRepository : BaseRepository, IOrderRepository
     {
         return await _context.Orders
             .Include(p => p.OrderStatus)
+            //.Include(p=>p.Product)
             .Where(p => p.UserId == userId)
+            .ToListAsync();
+    }
+    
+    public async Task<IEnumerable<Order>> FindByStatusIdAndUserId(int orderStatusId, int userId)
+    {
+        return await _context.Orders
+            .Include(p => p.OrderStatus)
+            .Include(p=>p.Product)
+            .Where(p => p.User.Id == userId)
+            .Where(p=>p.OrderStatusId == orderStatusId)
             .ToListAsync();
     }
 

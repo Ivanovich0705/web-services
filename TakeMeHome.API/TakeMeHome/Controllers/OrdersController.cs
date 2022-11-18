@@ -42,6 +42,15 @@ public class OrdersController : ControllerBase
         var resources = _mapper.Map<IEnumerable<Order>, IEnumerable<OrderResource>>(orders);
         return resources;
     }
+    [HttpGet]
+    [Route("{id}")]
+    public async Task<OrderResource> GetAsync(int id)
+    {
+        var order = await _orderService.FindByIdAsync(id);
+        var resource = _mapper.Map<Order, OrderResource>(order);
+        return resource;
+    }
+    
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveOrderResource resource)
     {

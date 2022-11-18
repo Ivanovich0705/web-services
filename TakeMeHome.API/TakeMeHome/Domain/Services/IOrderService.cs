@@ -10,6 +10,7 @@ public interface IOrderService
     Task<IEnumerable<Order>> ListByUserIdAsync(int userId);
     Task<OrderResponse> SaveAsync(Order order);
     Task<Order> FindByIdAsync(int orderId);
+    Task<IEnumerable<Order>> ListByStatusIdAndUserIdAsync(int orderStatusId, int userId);
     Task<OrderResponse> UpdateAsync(int id, Order order);
     Task<OrderResponse> DeleteAsync(int id);
 }

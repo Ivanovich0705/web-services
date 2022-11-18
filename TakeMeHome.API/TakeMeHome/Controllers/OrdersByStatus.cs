@@ -22,13 +22,14 @@ public class OrdersByStatus: ControllerBase
         _orderStatusService = orderStatusService;
         _mapper = mapper;
     }
-    //Devolver las ordenes por estado y user id
+    //Devolver las ordenes por estado y user id sin devolver el producto
     [HttpGet]
     [Route("{statusId}/{userId}")]
     public async Task<IEnumerable<OrderResource>> GetOrdersByStatus(int statusId, int userId)
     {
-        var orders = await _orderService.ListByUserIdAsync(userId);
-        orders.Where(o => o.OrderStatus.Id == statusId);
+        //var orders = await _orderService.ListByUserIdAsync(userId);
+        //orders.Where(o => o.OrderStatus.Id == statusId);
+        var orders = await  _orderService.ListByStatusIdAndUserIdAsync(statusId, userId);
         var resources = _mapper.Map<IEnumerable<Order>, IEnumerable<OrderResource>>(orders);
         return resources;
     }

@@ -27,6 +27,13 @@ public class ProductRepository : BaseRepository, IProductRepository
         return await _context.Products
             .FirstOrDefaultAsync(p => p.Id == id);
     }
+    public async Task<IEnumerable<Product>> FindByUserIdAndStatusIdAsync(int userId, int statusId)
+    {
+        return await _context.Products
+            .Where(p => p.Order.UserId == userId && p.Order.OrderStatusId == statusId)
+            .Include(p=> p.Order)
+            .ToListAsync();
+    }
 
     public void Update(Product product)
     {

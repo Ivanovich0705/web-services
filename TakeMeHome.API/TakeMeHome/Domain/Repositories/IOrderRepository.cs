@@ -9,6 +9,7 @@ public interface IOrderRepository
     Task<Order> FindByIdAsync(int id);
     Task<IEnumerable<Order>> FindByOrderStatusId(int orderStatusId);
     Task<IEnumerable<Order>> FindyByUserId(int userId);
+    Task<IEnumerable<Order>> FindByStatusIdAndUserId(int orderStatusId, int userId);
     void Update(Order order);
     void Remove(Order order);
 }
