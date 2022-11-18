@@ -63,8 +63,28 @@ public class OrderRepository : BaseRepository, IOrderRepository
     {
         return await _context.Orders
             .Include(p => p.OrderStatus)
+            //.Include(p=>p.Product)
             .Where(p => p.UserId == userId)
             .ToListAsync();
+    }
+    
+    public async Task<IEnumerable<Order>> FindByStatusIdAndUserId(int orderStatusId, int userId)
+    {
+        return await _context.Orders
+            .Include(p => p.OrderStatus)
+            .Include(p=>p.Product)
+            .Where(p => p.User.Id == userId)
+            .Where(p=>p.OrderStatusId == orderStatusId)
+            .ToListAsync();
+    }
+    
+    public async Task<Order> FindByOrderCodeAndUserId(string orderCode, int userId)
+    {
+        return await _context.Orders
+            .Include(p => p.OrderStatus)
+            .Include(p=>p.Product)
+            .Include(p=> p.Client)
+            .FirstOrDefaultAsync(p=>p.OrderCode == orderCode && p.UserId == userId);
     }
 
     public void Update(Order order)

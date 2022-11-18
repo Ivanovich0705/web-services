@@ -16,4 +16,5 @@ public class OrderResource
     public DateTime DeadlineDate { get; set; }
     public int CurrentProcess { get; set; }
     public OrderStatusResource OrderStatus { get; set; }
+    //public ProductResource Product { get; set; }
 }

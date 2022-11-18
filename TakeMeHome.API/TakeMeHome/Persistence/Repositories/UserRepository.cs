@@ -37,6 +37,12 @@ public class UserRepository : BaseRepository, IUserRepository
         return await _context.Users
             .FirstOrDefaultAsync(p=>p.Email == email && p.Password == password);
     }
+    
+    public async Task<User> FindByEmailAsync(string email)
+    {
+        return await _context.Users
+            .FirstOrDefaultAsync(p=>p.Email == email);
+    }
 
     public void Update(User user)
     {

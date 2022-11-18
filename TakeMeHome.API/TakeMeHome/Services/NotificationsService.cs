@@ -25,6 +25,10 @@ public class NotificationsService : INotificationsService
     {
         return await _notificationsRepository.FindByUserId(userId);
     }
+    public async Task<IEnumerable<Notifications>> ListByOrderIdAsync(int orderId)
+    {
+        return await _notificationsRepository.FindByOrderId(orderId);
+    }
     public async Task<NotificationsResponse> SaveAsync(Notifications notifications)
     {
         try

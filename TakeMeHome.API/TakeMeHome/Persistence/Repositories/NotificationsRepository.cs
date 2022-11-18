@@ -36,6 +36,15 @@ public class NotificationsRepository : BaseRepository  , INotificationsRepositor
             .ToListAsync();
             //.ToListAsync();
     }
+    public async Task<IEnumerable<Notifications>> FindByOrderId(int orderId)
+    {
+        return await _context.Notifications
+            .Where(p => p.OrderId==orderId)
+            //.Include(p => p.Order.User)
+            .Include(p=>p.Order)
+            .ToListAsync();
+        //.ToListAsync();
+    }
     public void Update(Notifications notifications)
     {
         _context.Notifications.Update(notifications);

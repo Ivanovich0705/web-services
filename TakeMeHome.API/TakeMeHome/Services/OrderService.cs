@@ -39,6 +39,15 @@ public class OrderService : IOrderService
         return await _orderRepository.FindyByUserId(userId);
     }
 
+    public async Task<Order> FindByOrderCodeAndUserIdAsync(string orderCode, int userId)
+    {
+        return await _orderRepository.FindByOrderCodeAndUserId(orderCode, userId);
+    }
+    
+    public async Task<IEnumerable<Order>> ListByStatusIdAndUserIdAsync(int orderStatusId, int userId)
+    {
+        return await _orderRepository.FindByStatusIdAndUserId(orderStatusId, userId);
+    }
     public async Task<OrderResponse> SaveAsync(Order order)
     {
         //Validate OrderStatusId
@@ -78,13 +87,13 @@ public class OrderService : IOrderService
             return new OrderResponse("Order not found.");
         }
 
-        //Validate OrderStatusId
-        var existingOrderStatus = await _orderStatusRepository.FindByIdAsync(order.OrderStatusId);
-        
-        if (existingOrderStatus == null)
-        {
-            return new OrderResponse("Invalid OrderStatusId.");
-        }
+        // //Validate OrderStatusId
+        // var existingOrderStatus = await _orderStatusRepository.FindByIdAsync(order.OrderStatusId);
+        //
+        // if (existingOrderStatus == null)
+        // {
+        //     return new OrderResponse("Invalid OrderStatusId.");
+        // }
         //IF ANY ERROR, MAYBE UPDATING STATUSID
         existingOrder.OrderCode = order.OrderCode;
         existingOrder.OrderStatusId= order.OrderStatusId;

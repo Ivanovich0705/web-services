@@ -7,6 +7,7 @@ public interface INotificationsService
 {
     Task<IEnumerable<Notifications>> ListAsync();
     Task<IEnumerable<Notifications>> ListByUserIdAsync(int userId);
+    Task<IEnumerable<Notifications>> ListByOrderIdAsync(int orderId);
     Task<NotificationsResponse> SaveAsync(Notifications notifications);
     Task<Notifications> FindByIdAsync(int notificationsId);
     

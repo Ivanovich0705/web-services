@@ -39,7 +39,10 @@ public class ProductService : IProductService
         }
     }
     
-
+    public async Task<IEnumerable<Product>> ListByUserIdAndStatusIdAsync(int userId, int statusId)
+    {
+        return await _productRepository.FindByUserIdAndStatusIdAsync(userId, statusId);
+    }
     public async Task<ProductResponse> UpdateAsync(int id, Product product)
     {
         var existingProduct = await _productRepository.FindByIdAsync(id);

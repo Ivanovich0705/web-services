@@ -50,6 +50,11 @@ public class UserService : IUserService
             return new UserResponse($"An error occurred when saving the user: {e.Message}");
         }
     }
+    
+    public async Task<User> FindByEmailAsync(string email)
+    {
+        return await _userRepository.FindByEmailAsync(email);
+    }
 
     public async Task<UserResponse> UpdateAsync(int id, User user)
     {
