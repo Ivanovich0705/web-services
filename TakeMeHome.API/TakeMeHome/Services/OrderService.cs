@@ -87,13 +87,13 @@ public class OrderService : IOrderService
             return new OrderResponse("Order not found.");
         }
 
-        //Validate OrderStatusId
-        var existingOrderStatus = await _orderStatusRepository.FindByIdAsync(order.OrderStatusId);
-        
-        if (existingOrderStatus == null)
-        {
-            return new OrderResponse("Invalid OrderStatusId.");
-        }
+        // //Validate OrderStatusId
+        // var existingOrderStatus = await _orderStatusRepository.FindByIdAsync(order.OrderStatusId);
+        //
+        // if (existingOrderStatus == null)
+        // {
+        //     return new OrderResponse("Invalid OrderStatusId.");
+        // }
         //IF ANY ERROR, MAYBE UPDATING STATUSID
         existingOrder.OrderCode = order.OrderCode;
         existingOrder.OrderStatusId= order.OrderStatusId;

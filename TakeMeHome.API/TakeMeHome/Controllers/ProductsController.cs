@@ -36,9 +36,7 @@ public class ProductsController : ControllerBase
         var resources = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
         return resources;
     }
-
-
- 
+    
     [HttpGet("order/{id}")]
     public async Task<IActionResult> GetByOrderIdAsync(int id)
     {
