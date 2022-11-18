@@ -9,6 +9,7 @@ public interface IUserService
     Task<User> FindByIdAsync(int id);
     Task<User> FindByUserNameAsync(string userName);
     Task<User> FindByEmailAndPasswordAsync(string email, string password);
+    Task<User> FindByEmailAsync(string email);
     Task<UserResponse> SaveAsync(User user);
     Task<UserResponse> UpdateAsync(int id, User user);
     Task<UserResponse> DeleteAsync(int id);
