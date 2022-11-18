@@ -110,4 +110,15 @@ public class OrdersController : ControllerBase
         var orderResource = _mapper.Map<Order, OrderResource>(result.Resource);
         return Ok(order);
     }
+    
+    [HttpGet]
+    [Route("orderCode/{orderCode}/user/{userId}")]
+    public async Task<OrderResource> GetByOrderCodeAndUserIdAsync(string orderCode, int userId)
+    {
+        var order = await _orderService.FindByOrderCodeAndUserIdAsync(orderCode, userId);
+        var resource = _mapper.Map<Order, OrderResource>(order);
+        return resource;
+    }
+    
+    
 }

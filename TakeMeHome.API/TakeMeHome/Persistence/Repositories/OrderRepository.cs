@@ -79,6 +79,15 @@ public class OrderRepository : BaseRepository, IOrderRepository
             .Where(p=>p.OrderStatusId == orderStatusId)
             .ToListAsync();
     }
+    
+    public async Task<Order> FindByOrderCodeAndUserId(string orderCode, int userId)
+    {
+        return await _context.Orders
+            .Include(p => p.OrderStatus)
+            .Include(p=>p.Product)
+            .Include(p=> p.Client)
+            .FirstOrDefaultAsync(p=>p.OrderCode == orderCode && p.UserId == userId);
+    }
 
     public void Update(Order order)
     {
