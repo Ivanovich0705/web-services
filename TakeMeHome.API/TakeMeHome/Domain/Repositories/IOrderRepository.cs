@@ -10,6 +10,8 @@ public interface IOrderRepository
     Task<IEnumerable<Order>> FindByOrderStatusId(int orderStatusId);
     Task<IEnumerable<Order>> FindyByUserId(int userId);
     Task<IEnumerable<Order>> FindByStatusIdAndUserId(int orderStatusId, int userId);
+    Task<IEnumerable<Order>> FindByOrderStatusIdAndUserId(int orderStatusId, int userId);
+    //Task<IEnumerable<Order>> FindyByUserId(int userId);
     void Update(Order order);
     void Remove(Order order);
 }

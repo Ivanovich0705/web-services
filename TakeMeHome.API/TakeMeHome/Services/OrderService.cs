@@ -29,6 +29,11 @@ public class OrderService : IOrderService
         return await _orderRepository.FindByOrderStatusId(orderStatusId);
     }
 
+    public async Task<IEnumerable<Order>> ListByOrderStatusIdAndUserId(int orderStatusId, int userId)
+    {
+        return await _orderRepository.FindByOrderStatusIdAndUserId(orderStatusId, userId);
+    }
+
     public async Task<IEnumerable<Order>> ListByUserIdAsync(int userId)
     {
         return await _orderRepository.FindyByUserId(userId);
