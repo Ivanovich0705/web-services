@@ -12,4 +12,7 @@ public interface INotificationsService
     
     Task<NotificationsResponse> UpdateAsync(int id, Notifications notifications);
     Task<NotificationsResponse> DeleteAsync(int id);
+    
+    Task<Notifications> FindByOrderIdAsync(int id);
+    Task<IEnumerable<Notifications>> ListByOrderAndUserId(int id);
 }

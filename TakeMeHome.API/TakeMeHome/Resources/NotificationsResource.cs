@@ -8,5 +8,5 @@ public class NotificationsResource
     
     public string Type { get; set; }
     
-    public Order Order {get; set; }
+    public OrderResource Order { get; set; }
 }

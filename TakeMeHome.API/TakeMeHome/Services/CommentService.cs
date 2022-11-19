@@ -25,7 +25,10 @@ public class CommentService : ICommentService
     {
         return await _commentRepository.FindByUserId(userId);
     }
-
+    public async Task<IEnumerable<Comment>> ListByOrderAndUserId(int userId)
+    {
+        return await _commentRepository.ListByOrderAndUserId(userId);
+    }
     public async Task<CommentResponse> SaveAsync(Comment comment)
     {
         {

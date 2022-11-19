@@ -41,6 +41,13 @@ public class CommentRepository : BaseRepository, ICommentRepository
             .ToListAsync();
     }
     
+    public async Task<IEnumerable<Comment>> ListByOrderAndUserId(int userId)
+    {
+        return await _context.Comments
+            .Where(p => p.Order.UserId == userId )
+            .Include(p=> p.Order.Client)
+            .ToListAsync();
+    }
     public void Update(Comment comment)
     {
         _context.Comments.Update(comment);

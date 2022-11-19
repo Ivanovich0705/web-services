@@ -7,6 +7,8 @@ public interface ICommentService
 {
     Task<IEnumerable<Comment>> ListAsync();
     Task<IEnumerable<Comment>> ListByUserIdAsync(int userId);
+    Task<IEnumerable<Comment>> ListByOrderAndUserId(int id);
+
     Task<CommentResponse> SaveAsync(Comment comment);
     Task<CommentResponse> UpdateAsync(int id, Comment comment);
     Task<CommentResponse> DeleteAsync(int id);

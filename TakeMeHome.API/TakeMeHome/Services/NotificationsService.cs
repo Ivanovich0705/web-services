@@ -89,4 +89,13 @@ public class NotificationsService : INotificationsService
             return new NotificationsResponse($"An Notifications occurred while deleting the comment: {e.Message}");
         }
     }
+    public async Task<Notifications> FindByOrderIdAsync(int id)
+    {
+        return await _notificationsRepository.FindByOrderIdAsync(id);
+    }
+    
+    public async Task<IEnumerable<Notifications>> ListByOrderAndUserId(int userId)
+    {
+        return await _notificationsRepository.ListByOrderAndUserId(userId);
+    }
 }
