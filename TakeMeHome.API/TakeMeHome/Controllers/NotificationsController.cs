@@ -42,6 +42,7 @@ public class NotificationsController: ControllerBase
         return resources;
     }
     
+
     //[HttpGet]
     //[Route("{order_id}")]
     //public async Task<IEnumerable<NotificationsResource>> GetByOrderIdAsync(int order_id)
@@ -50,6 +51,7 @@ public class NotificationsController: ControllerBase
     //    var resources = _mapper.Map<IEnumerable<Notifications>, IEnumerable<NotificationsResource>>(notifications);
     //    return resources;
     //}
+
     
     [HttpPatch("{id}")]
     public async Task<IActionResult> UpdateAsync(int id, [FromBody] JsonPatchDocument<Notifications> resource)

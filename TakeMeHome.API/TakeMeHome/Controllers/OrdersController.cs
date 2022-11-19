@@ -70,12 +70,8 @@ public class OrdersController : ControllerBase
          var existingClient = await _userService.FindByIdAsync(resource.UserId);
          if (existingClient == null)
                 return BadRequest("Client doesnt exists");
-         
-         var existingTourist = await _userService.FindByIdAsync(resource.ClientId);
-            if (existingTourist == null)
-                    return BadRequest("Tourist doesnt exists");
-         
-        var exisingStatus = await _orderStatusService.FindByIdAsync(resource.OrderStatusId);
+
+         var exisingStatus = await _orderStatusService.FindByIdAsync(resource.OrderStatusId);
         if (exisingStatus == null)
             return BadRequest("Order Status doesnt exists");
             
