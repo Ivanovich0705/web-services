@@ -104,11 +104,11 @@ public class OrdersController : ControllerBase
         
         var result = await _orderService.UpdateAsync(id, order);
         
-        if (!result.Success)
-            return BadRequest(result.Message);
+        // if (!result.Success)
+        //     return BadRequest(result.Message);
         
-        var orderResource = _mapper.Map<Order, OrderResource>(result.Resource);
-        return Ok(order);
+        //var orderResource = _mapper.Map<Order, OrderResource>(result.Resource);
+        return Ok();
     }
     
     [HttpGet]
