@@ -42,6 +42,17 @@ public class NotificationsController: ControllerBase
         return resources;
     }
     
+
+    //[HttpGet]
+    //[Route("{order_id}")]
+    //public async Task<IEnumerable<NotificationsResource>> GetByOrderIdAsync(int order_id)
+    //{
+    //    var notifications = await _notificationsService.ListByUserIdAsync(order_id);
+    //    var resources = _mapper.Map<IEnumerable<Notifications>, IEnumerable<NotificationsResource>>(notifications);
+    //    return resources;
+    //}
+
+    
     [HttpPatch("{id}")]
     public async Task<IActionResult> UpdateAsync(int id, [FromBody] JsonPatchDocument<Notifications> resource)
     {
@@ -94,4 +105,34 @@ public class NotificationsController: ControllerBase
         var notificationsResource = _mapper.Map<Notifications, NotificationsResource>(result.Resource);
         return Ok(notificationsResource);
     }
+    
+    
+ 
+    
+    [HttpGet("order/{id}")]
+    public async Task<IActionResult> GetByOrderIdAsync(int id)
+    {
+        var notifications = await _notificationsService.FindByOrderIdAsync(id);
+        var resources = _mapper.Map<Notifications, NotificationsResource>(notifications);
+        return Ok(resources);
+    }
+    
+    [HttpGet]
+    [Route("order/user/{id}")]
+    public async Task<IEnumerable<NotificationsResource>> GetByOrderAndUserIdAsync(int id)
+    {
+        var notifications = await _notificationsService.ListByOrderAndUserId(id);
+        var resources = _mapper.Map<IEnumerable<Notifications>, IEnumerable<NotificationsResource>>(notifications);
+        return resources;
+    }
+    
+    //[HttpGet]
+    //[Route("orderCode/{orderCode}/user/{userId}")]
+    //public async Task<OrderResource> GetByOrderCodeAndUserIdAsync(string orderCode, int userId)
+    //{
+    //    var order = await _orderService.FindByOrderCodeAndUserIdAsync(orderCode, userId);
+    //    var resource = _mapper.Map<Order, OrderResource>(order);
+    //    return resource;
+    //}
+    
 }

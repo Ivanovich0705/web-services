@@ -81,6 +81,15 @@ public class CommentsController : ControllerBase
         return resources;
     }
     
+    [HttpGet]
+    [Route("order/user/{id}")]
+    public async Task<IEnumerable<CommentResource>> GetByOrderAndUserIdAsync(int id)
+    {
+        var comments = await _commentService.ListByOrderAndUserId(id);
+        var resources = _mapper.Map<IEnumerable<Comment>, IEnumerable<CommentResource>>(comments);
+        return resources;
+    }
+    
     [HttpDelete]
     [Route("{comment_id}")]
     [SwaggerOperation(

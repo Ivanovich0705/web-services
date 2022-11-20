@@ -25,6 +25,10 @@ public class NotificationsService : INotificationsService
     {
         return await _notificationsRepository.FindByUserId(userId);
     }
+    public async Task<IEnumerable<Notifications>> ListByOrderIdAsync(int orderId)
+    {
+        return await _notificationsRepository.FindByOrderId(orderId);
+    }
     public async Task<NotificationsResponse> SaveAsync(Notifications notifications)
     {
         try
@@ -84,5 +88,14 @@ public class NotificationsService : INotificationsService
         {
             return new NotificationsResponse($"An Notifications occurred while deleting the comment: {e.Message}");
         }
+    }
+    public async Task<Notifications> FindByOrderIdAsync(int id)
+    {
+        return await _notificationsRepository.FindByOrderIdAsync(id);
+    }
+    
+    public async Task<IEnumerable<Notifications>> ListByOrderAndUserId(int userId)
+    {
+        return await _notificationsRepository.ListByOrderAndUserId(userId);
     }
 }
