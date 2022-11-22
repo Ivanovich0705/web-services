@@ -54,7 +54,8 @@ public class NotificationsRepository : BaseRepository  , INotificationsRepositor
     {
         return await _context.Notifications
             .Where(p => p.Order.UserId == userId )
-            .Include(p=> p.Order)
+            .Include(p => p.Order)
+            .Include(p=> p.Order.Client)
             .ToListAsync();
     }
     public void Update(Notifications notifications)
